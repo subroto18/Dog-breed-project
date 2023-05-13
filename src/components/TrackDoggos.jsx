@@ -9,6 +9,7 @@ class TrackDoggos extends Component {
     dogBreeds: [],
   };
   static contextType = Context;
+  
 
   componentDidMount() {
     const appContext = this.context;
@@ -35,7 +36,6 @@ class TrackDoggos extends Component {
   }
 
   render() {
-    console.log(import.meta.env.VITE_API_KEY, "VITE_API_KEY");
     const { coordinates, dogBreeds } = this.state;
     const { google } = this.props;
 
@@ -81,5 +81,5 @@ class TrackDoggos extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: import.meta.env.REACT_APP_TITLE_GOOGLE_API_KEY,
+  apiKey: import.meta.env.VITE_GOOGLE_MAP_API_KEY,
 })(TrackDoggos);

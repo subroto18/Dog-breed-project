@@ -2,10 +2,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useContext } from "react";
 import { Fragment } from "react";
 import { Context } from "../context/AppContext";
-import Zoom from "react-medium-image-zoom";
-import "react-medium-image-zoom/dist/styles.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+
 export function Modal() {
   const context = useContext(Context);
   const { isModalVisible, setIsModalVisible, modalImage, subBreedRandomImage } =
@@ -51,13 +50,12 @@ export function Modal() {
                     </div>
                   ) : (
                     <div className="flex justify-center items-center">
-                      <Zoom>
-                        <LazyLoadImage
-                          src={modalImage}
-                          alt={modalImage}
-                          className="img-lazy w-full h-full"
-                        />
-                      </Zoom>
+                      <LazyLoadImage
+                        effect="blur"
+                        src={modalImage}
+                        alt={modalImage}
+                        className="img-lazy w-full h-full"
+                      />
                     </div>
                   )}
                 </Dialog.Panel>

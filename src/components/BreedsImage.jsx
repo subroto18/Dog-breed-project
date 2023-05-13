@@ -23,7 +23,7 @@ export const BreedsImage = () => {
         Breed <span className="font-bold">"{selectBreedName}"</span> image:
         click any one to view full image
       </h1>
-      <div className="flex flex-wrap">
+      <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-4 ">
         {data.map((image, index) => {
           return (
             <div
@@ -32,13 +32,14 @@ export const BreedsImage = () => {
                 setModalImage(image);
               }}
               key={image}
-              className="w-[15.2rem] h-[10rem] border-2 border-slate-900 rounded m-2  p-4 bg-slate-900 cursor"
+              className="rounded m-2  p-4 bg-slate-900 cursor drop-shadow-xl h-52 overflow-hidden"
             >
               <LazyLoadImage
+                effect="blur"
                 key={index}
                 src={image}
                 alt={image}
-                className="img-lazy w-full h-full"
+                className="img-lazy h-full w-full"
               />
             </div>
           );
