@@ -17,7 +17,9 @@ export const Home = () => {
       ) : selectBtnName === "List" ? (
         <SubBreedList />
       ) : (
-        <TrackDoggos />
+        <div className="text-center">
+          <TrackDoggos />
+        </div>
       )}
     </div>
   );

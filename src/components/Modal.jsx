@@ -2,16 +2,22 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useContext } from "react";
 import { Fragment } from "react";
 import { Context } from "../context/AppContext";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 export function Modal() {
   const context = useContext(Context);
   const { isModalVisible, setIsModalVisible, modalImage, subBreedRandomImage } =
     context;
 
   const { loading } = subBreedRandomImage;
-
+  const props = {
+    width: 400,
+    zoomPosition: "original",
+    zoomWidth: 400,
+    img: modalImage,
+    height: 300,
+  };
   return (
     <>
       <Transition appear show={isModalVisible} as={Fragment}>
@@ -43,19 +49,19 @@ export function Modal() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-lg transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   {loading ? (
                     <div className="h-[10rem] flex justify-center items-center">
                       <h1>Loading...</h1>
                     </div>
                   ) : (
                     <div className="flex justify-center items-center">
-                      <LazyLoadImage
-                        effect="blur"
-                        src={modalImage}
-                        alt={modalImage}
-                        className="img-lazy w-full h-full"
-                      />
+                      <Zoom>
+                        <img
+                          alt="That Wanaka Tree, New Zealand by Laura Smetsers"
+                          src={modalImage}
+                        />
+                      </Zoom>
                     </div>
                   )}
                 </Dialog.Panel>

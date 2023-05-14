@@ -9,7 +9,6 @@ class TrackDoggos extends Component {
     dogBreeds: [],
   };
   static contextType = Context;
-  
 
   componentDidMount() {
     const appContext = this.context;
